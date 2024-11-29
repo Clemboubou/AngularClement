@@ -13,7 +13,8 @@ export class DashboardComponent implements OnInit {
   resolvedCount: number = 0;
   lastResolved: any = null;
   resolvedByPerson: any = [];
-
+  chartData = [10, 20, 30]; // Exemple de données
+  chartLabels = ['Employé 1', 'Employé 2', 'Employé 3'];
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
