@@ -1,12 +1,15 @@
-<div>
+<div class="dashboard">
   <h2>Dashboard</h2>
-  <p>Tickets résolus : {{ resolvedTicketsCount }}</p>
-  <p>Dernier ticket résolu : {{ lastResolvedTicket?.description || 'Aucun' }}</p>
 
-  <h3>Tickets résolus par personne</h3>
+  <p>Nombre total de tickets résolus : {{ resolvedCount }}</p>
+  <p>Dernier ticket résolu : {{ lastResolved?.description || 'Aucun ticket résolu' }}</p>
+
+  <h3>Tickets résolus par employé</h3>
   <ul>
     @for (person of resolvedByPerson; track person.user) {
-      <li>Utilisateur {{ person.user }} : {{ person.count }} tickets</li>
+      <li>
+        Utilisateur : {{ person.user }} - {{ person.count }} tickets résolus
+      </li>
     }
     @empty {
       <li>Aucune donnée disponible</li>
