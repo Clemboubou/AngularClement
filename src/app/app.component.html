@@ -1,6 +1,21 @@
 <nav>
-  <a routerLink="/">Accueil</a>
-  <a routerLink="/tickets">Tickets</a>
-  <a routerLink="/dashboard">Dashboard</a>
+  <ul>
+    <li>
+      <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="page-actuelle">
+        Accueil
+      </a>
+    </li>
+    <li>
+      <a routerLink="/tickets" routerLinkActive="page-actuelle">
+        Voir les tickets
+      </a>
+    </li>
+    <li>
+      <a routerLink="/dashboard" routerLinkActive="page-actuelle">
+        Créer un ticket
+      </a>
+    </li>
+  </ul>
 </nav>
+
 <router-outlet></router-outlet>

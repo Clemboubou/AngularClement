@@ -6,18 +6,22 @@
   </label>
 
   <ul>
-    @for (ticket of tickets; track ticket.id) {
+    <!-- Séparation de *ngFor et *ngIf en utilisant un ng-container -->
+    <ng-container *ngFor="let ticket of tickets">
       <li *ngIf="showResolved || ticket.status !== 'resolved'">
-        <strong>Description :</strong> {{ ticket.description }} <br />
-        <strong>Priorité :</strong> {{ ticket.priority_id }} <br />
-        <strong>Statut :</strong> {{ ticket.status }} <br />
+        <div>
+          <strong>Description :</strong> {{ ticket.description }}
+        </div>
+        <div>
+          <strong>Priorité :</strong> {{ ticket.priority_id }}
+        </div>
+        <div>
+          <strong>Statut :</strong> {{ ticket.status }}
+        </div>
         <button *ngIf="ticket.status === 'open'" (click)="resolveTicket(ticket.id)">
           Résoudre
         </button>
       </li>
-    }
-    @empty {
-      <li>Aucun ticket disponible</li>
-    }
+    </ng-container>
   </ul>
 </div>

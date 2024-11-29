@@ -1,35 +1,45 @@
-<h2>Gestion des Tickets</h2>
+<div class="tickets">
+  <h2>Gestion des Tickets</h2>
 
-<!-- Section Création de ticket -->
-<form (submit)="createTicket()">
-  <label>
-    Description :
-    <textarea [(ngModel)]="newTicket.description" placeholder="Description" required></textarea>
-  </label>
+  <!-- Bouton pour afficher/masquer le formulaire -->
+  <button (click)="toggleCreateTicket()">
+    {{ showCreateTicket ? 'Fermer le formulaire' : 'Créer un ticket' }}
+  </button>
 
-  <label>
-    Priorité :
-    <select [(ngModel)]="newTicket.priority_id" required>
-      @for (priority of priorities; track priority.id) {
-        <option [value]="priority.id">{{ priority.name }}</option>
-      }
-    </select>
-  </label>
+  <!-- Formulaire de création de ticket -->
+  <div *ngIf="showCreateTicket" class="create-ticket-form">
+    <form (submit)="createTicket()">
+      <label>
+        Description :
+        <textarea [(ngModel)]="newTicket.description" placeholder="Description" required></textarea>
+      </label>
 
-  <button type="submit">Créer Ticket</button>
-</form>
+      <label>
+        Priorité :
+        <select [(ngModel)]="newTicket.priority_id" required>
+          <option *ngFor="let priority of priorities" [value]="priority.id">
+            {{ priority.name }}
+          </option>
+        </select>
+      </label>
 
-<!-- Section Vue des Tickets -->
-<h3>Liste des Tickets</h3>
-<ul>
-  @for (ticket of tickets; track ticket.id) {
-    <li>
-      <strong>Description :</strong> {{ ticket.description }} <br />
-      <strong>Priorité :</strong> {{ ticket.priority_id }} <br />
-      <strong>Statut :</strong> {{ ticket.status }}
+      <button type="submit">Créer Ticket</button>
+    </form>
+  </div>
+
+  <!-- Liste des Tickets -->
+  <h3>Liste des Tickets</h3>
+  <ul>
+    <li *ngFor="let ticket of tickets">
+      <div>
+        <strong>Description :</strong> {{ ticket.description }}
+      </div>
+      <div>
+        <strong>Priorité :</strong> {{ ticket.priority_id }}
+      </div>
+      <div>
+        <strong>Statut :</strong> {{ ticket.status }}
+      </div>
     </li>
-  }
-  @empty {
-    <li>Aucun ticket disponible</li>
-  }
-</ul>
+  </ul>
+</div>

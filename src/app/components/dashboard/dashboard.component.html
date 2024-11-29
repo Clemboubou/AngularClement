@@ -1,18 +1,14 @@
 <div class="dashboard">
-  <h2>Dashboard</h2>
+  <h2>Tableau de bord</h2>
 
-  <p>Nombre total de tickets résolus : {{ resolvedCount }}</p>
-  <p>Dernier ticket résolu : {{ lastResolved?.description || 'Aucun ticket résolu' }}</p>
+  <p><strong>Nombre total de tickets résolus :</strong> {{ resolvedCount }}</p>
+  <p><strong>Dernier ticket résolu :</strong> {{ lastResolved?.description || 'Aucun ticket résolu' }}</p>
 
   <h3>Tickets résolus par employé</h3>
   <ul>
-    @for (person of resolvedByPerson; track person.user) {
-      <li>
-        Utilisateur : {{ person.user }} - {{ person.count }} tickets résolus
-      </li>
-    }
-    @empty {
-      <li>Aucune donnée disponible</li>
-    }
+    <li *ngFor="let person of resolvedByPerson">
+      <span>Utilisateur : {{ person.user }}</span>
+      <span>{{ person.count }} tickets résolus</span>
+    </li>
   </ul>
 </div>
