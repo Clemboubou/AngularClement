@@ -1,4 +1,4 @@
-<div>
+<div class="home">
   <h2>Mes Tickets</h2>
   <label>
     <input type="checkbox" [(ngModel)]="showResolved" />
@@ -6,7 +6,7 @@
   </label>
   <ul>
     @for (ticket of tickets; track ticket.id) {
-      <li ngIf="showResolved || ticket.status !== 'resolved'">
+      <li *ngIf="showResolved || ticket.status !== 'resolved'">
         <strong>Description :</strong> {{ ticket.description }} <br />
         <strong>Statut :</strong> {{ ticket.status }}
       </li>

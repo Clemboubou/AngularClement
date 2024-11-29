@@ -22,10 +22,16 @@ export class HomeComponent implements OnInit {
   }
 
   getAssignedTickets(): void {
-    const currentUserId = 3; // À remplacer par un service d'authentification
-    this.apiService.getTickets().subscribe((data: any[]) => {
-      this.tickets = data.filter(ticket => ticket.assigned_to === currentUserId);
-    });
+    const currentUserId = 3; // À remplacer par l'utilisateur connecté
+    this.apiService.getTickets().subscribe(
+      (data: any[]) => {
+        console.log('Tickets reçus :', data); // Vérifie les données reçues
+        this.tickets = data.filter(ticket => ticket.assigned_to === currentUserId);
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des tickets :', error);
+      }
+    );
   }
 
   toggleResolvedTickets(): void {
