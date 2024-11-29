@@ -25,10 +25,9 @@ export class LoginComponent {
   login(): void {
     this.apiService.login({ email: this.email }).subscribe(
       (response: any) => {
-        console.log('Connexion réussie :', response);
         localStorage.setItem('token', response.jwt);
-        localStorage.setItem('name', response.name);
         localStorage.setItem('role', response.role);
+        localStorage.setItem('name', response.name);
         this.router.navigate(['/']);
       },
       (error) => {
@@ -36,5 +35,6 @@ export class LoginComponent {
       }
     );
   }
+
 
 }

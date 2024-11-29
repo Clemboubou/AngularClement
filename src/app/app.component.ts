@@ -11,16 +11,24 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  name: string | null = null;
-  role: string | null = null;
+  role: string | null = null; // Rôle utilisateur
+  isLoggedIn: boolean = false; // État de connexion
 
-  constructor(private router: Router, private userService: UserService) {
-    this.userService.name$.subscribe((name) => (this.name = name));
-    this.userService.role$.subscribe((role) => (this.role = role));
+  constructor(private router: Router) {
+    this.checkLoginStatus();
+  }
+
+  // Vérifie si l'utilisateur est connecté
+  checkLoginStatus(): void {
+    const token = localStorage.getItem('token');
+    this.role = localStorage.getItem('role');
+    this.isLoggedIn = !!token; // Convertit en booléen
   }
 
   logout(): void {
-    this.userService.clearUserInfo();
+    localStorage.clear();
+    this.isLoggedIn = false;
+    this.role = null;
     this.router.navigate(['/login']);
   }
 }
