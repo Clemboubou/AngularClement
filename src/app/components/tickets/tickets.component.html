@@ -1,1 +1,21 @@
-<p>tickets works!</p>
+<div>
+  <h2>Gestion des Tickets</h2>
+  <form (submit)="createTicket()">
+    <input [(ngModel)]="newTicket.description" placeholder="Description" required />
+    <select [(ngModel)]="newTicket.priority_id" required>
+      @for (let priority of priorities) {
+        <option [value]="priority.id">{{ priority.name }}</option>
+      }
+    </select>
+    <button type="submit">Créer Ticket</button>
+  </form>
+
+  <h3>Liste des Tickets</h3>
+  <ul>
+    @for (let ticket of tickets) {
+      <li>
+        {{ ticket.description }} - {{ ticket.status }}
+      </li>
+    }
+  </ul>
+</div>

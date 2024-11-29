@@ -1,1 +1,18 @@
-<p>home works!</p>
+<div class="home">
+  <h2>Mes Tickets</h2>
+  <label>
+    <input type="checkbox" [(ngModel)]="showResolved" />
+    Afficher les tickets résolus
+  </label>
+  <div>
+    <ul>
+      @for (let ticket of tickets) {
+        <li @if="showResolved || ticket.status !== 'resolved'">
+          <strong>Description :</strong> {{ ticket.description }} <br />
+          <strong>Priorité :</strong> {{ ticket.priority_id }} <br />
+          <strong>Statut :</strong> {{ ticket.status }} <br />
+        </li>
+      }
+    </ul>
+  </div>
+</div>

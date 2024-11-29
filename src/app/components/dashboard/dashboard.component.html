@@ -1,1 +1,15 @@
-<p>dashboard works!</p>
+<div>
+  <h2>Dashboard</h2>
+  <p>Tickets résolus : {{ resolvedTicketsCount }}</p>
+  <p>Dernier ticket résolu : {{ lastResolvedTicket?.description || 'Aucun' }}</p>
+
+  <h3>Tickets résolus par personne</h3>
+  <ul>
+    @for (let person of resolvedByPerson) {
+      <li>Utilisateur {{ person.user }} : {{ person.count }} tickets</li>
+    }
+    @empty {
+      <li>Aucune donnée disponible</li>
+    }
+  </ul>
+</div>
