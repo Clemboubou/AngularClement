@@ -5,7 +5,7 @@
 
   <h3>Tickets résolus par personne</h3>
   <ul>
-    @for (let person of resolvedByPerson) {
+    @for (person of resolvedByPerson; track person.user) {
       <li>Utilisateur {{ person.user }} : {{ person.count }} tickets</li>
     }
     @empty {

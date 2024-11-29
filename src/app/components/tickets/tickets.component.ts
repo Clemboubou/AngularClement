@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-tickets',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.css']
+  styleUrls: ['./tickets.component.css'],
+  providers: [ApiService],
 })
 export class TicketsComponent implements OnInit {
   tickets: any[] = [];

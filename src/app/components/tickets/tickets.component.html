@@ -3,7 +3,7 @@
   <form (submit)="createTicket()">
     <input [(ngModel)]="newTicket.description" placeholder="Description" required />
     <select [(ngModel)]="newTicket.priority_id" required>
-      @for (let priority of priorities) {
+      @for (priority of priorities; track priority.id) {
         <option [value]="priority.id">{{ priority.name }}</option>
       }
     </select>
@@ -12,10 +12,13 @@
 
   <h3>Liste des Tickets</h3>
   <ul>
-    @for (let ticket of tickets) {
+    @for (ticket of tickets; track ticket.id) {
       <li>
         {{ ticket.description }} - {{ ticket.status }}
       </li>
+    }
+    @empty {
+      <li>Aucun ticket à afficher</li>
     }
   </ul>
 </div>
