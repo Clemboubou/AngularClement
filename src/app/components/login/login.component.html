@@ -1,0 +1,15 @@
+<div class="login">
+  <h2>Connexion</h2>
+  <form (submit)="login()">
+    <label>
+      Email :
+      <input type="email" [(ngModel)]="email" [ngModelOptions]="{ standalone: true }" required />
+    </label>
+    <label>
+      Mot de passe :
+      <input type="password" [(ngModel)]="password" [ngModelOptions]="{ standalone: true }" required />
+    </label>
+    <button type="submit">Se connecter</button>
+  </form>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>

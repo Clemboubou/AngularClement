@@ -1,14 +1,26 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router'; // Import des modules nécessaires
-import { FormsModule } from '@angular/forms';
+import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common'; // Importer CommonModule
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, FormsModule], // Ajout de RouterLink et RouterLinkActive
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, RouterModule, CommonModule], // Ajouter CommonModule
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'AngularClement';
+  name: string | null = null;
+  role: string | null = null;
+
+  constructor(private router: Router, private userService: UserService) {
+    this.userService.name$.subscribe((name) => (this.name = name));
+    this.userService.role$.subscribe((role) => (this.role = role));
+  }
+
+  logout(): void {
+    this.userService.clearUserInfo();
+    this.router.navigate(['/login']);
+  }
 }

@@ -11,12 +11,12 @@
     <form (submit)="createTicket()">
       <label>
         Description :
-        <textarea [(ngModel)]="newTicket.description" placeholder="Description" required></textarea>
+        <textarea [(ngModel)]="newTicket.description" name="description" placeholder="Description" required></textarea>
       </label>
 
       <label>
         Priorité :
-        <select [(ngModel)]="newTicket.priority_id" required>
+        <select [(ngModel)]="newTicket.priority_id" name="priority" required>
           <option *ngFor="let priority of priorities" [value]="priority.id">
             {{ priority.name }}
           </option>
