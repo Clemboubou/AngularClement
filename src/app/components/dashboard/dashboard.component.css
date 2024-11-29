@@ -1,20 +1,36 @@
+/* Dashboard Styles */
 .dashboard {
-  padding: 20px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h3 {
-  margin-top: 20px;
+.dashboard h2 {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 1.5rem;
 }
 
-ul {
-  margin-top: 15px;
+.dashboard p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
 }
 
-li {
+.dashboard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dashboard li {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
-  border-radius: 20px;
-  background-color: red;
-  color: white;
+  align-items: center;
 }

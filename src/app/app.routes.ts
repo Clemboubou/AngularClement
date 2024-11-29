@@ -13,7 +13,7 @@ export const routes: Routes = [
     path: 'tickets',
     component: TicketsComponent,
     canActivate: [AuthGuard, RoleGuard],
-    data: { roles: ['chef_service', 'employe'] }, // Accessible uniquement aux chefs de service et employés
+    data: { roles: ['chef_service', 'employe','admin'] }, // Accessible uniquement aux chefs de service et employés
   },
   {
     path: 'dashboard',

@@ -2,23 +2,17 @@
   <ul>
     <!-- Onglet Accueil toujours visible -->
     <li>
-      <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="page-actuelle">
-        Accueil
-      </a>
+      <a routerLink="/" routerLinkActive="active">Accueil</a>
     </li>
 
     <!-- Onglet Tickets visible pour les utilisateurs connectés -->
     <li *ngIf="isLoggedIn">
-      <a routerLink="/tickets" routerLinkActive="page-actuelle">
-        Voir les tickets
-      </a>
+      <a routerLink="/tickets" routerLinkActive="page-actuelle">Tickets</a>
     </li>
 
     <!-- Onglet Dashboard visible uniquement pour admin et chef_service -->
     <li *ngIf="isLoggedIn && (role === 'admin' || role === 'chef_service')">
-      <a routerLink="/dashboard" routerLinkActive="page-actuelle">
-        Créer un ticket
-      </a>
+      <a routerLink="/dashboard" routerLinkActive="page-actuelle">Dashboard</a>
     </li>
 
     <!-- Bouton Déconnexion si connecté -->

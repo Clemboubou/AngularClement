@@ -39,6 +39,13 @@ export class ApiService {
   createPriority(priority: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/priorities`, priority);
   }
+  updateTicketStatus(ticketId: number, status: string): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/tickets/${ticketId}`, { status });
+  }
+
+  deleteTicket(ticketId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/tickets/${ticketId}`);
+  }
 
   // Obtenir les utilisateurs
   getUsers(): Observable<any> {

@@ -40,6 +40,12 @@
       <div>
         <strong>Statut :</strong> {{ ticket.status }}
       </div>
+      <div class="ticket-actions">
+        <!-- Bouton Modifier -->
+        <button (click)="modifyTicket(ticket.id)">Modifier Statut</button>
+        <!-- Bouton Supprimer -->
+        <button (click)="deleteTicket(ticket.id)">Supprimer</button>
+      </div>
     </li>
   </ul>
 </div>
